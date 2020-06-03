@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+{% block seo %}
+
+
+<title>Otuz Beş Restaurant</title>
+
+<meta name="description" content="?" />
+
+<meta name="keywords" content="?" />
+
+<link rel="canonical" href="?"/>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta name="robots" content="index,follow"/>
+
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                {% for x in products%}
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img width="300" class="card-img rounded-0" src="{% if x.image %}{{ x.image.url }}{% else %}{% endif %}" alt="">
+                                <a class="blog_item_date">
+                                    <h3>{{x.name}}</h3>
+                                    <p>{{x.price}} Tl</p>
+                                </a>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="single-blog.html">
+                                    <h2>{{x.name}}</h2>
+                                </a>
+                                <p>{{x.info}}</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-auto text-right">
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if products.has_previous %}
+                                    <a href="?page=1">&laquo; Geri</a>
+                                    <a href="?page={{ products.previous_page_number }}">Son</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Sayfa {{ products.number }} & {{ products.paginator.num_pages }}.
+                                </span>
+
+                                {% if products.has_next %}
+                                    <a href="?page={{ products.next_page_number }}">İleri</a>
+                                    <a href="?page={{ products.paginator.num_pages }}">Son &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <br>
+         <div class="container text-center">
+          <div class="row">
+                <div class="col-lg-12">
+                    <div class="iteam_links">
+                        <a class="boxed-btn5" href="/">Ana Sayfa</a>
+                    </div>
+                </div>
+          </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
